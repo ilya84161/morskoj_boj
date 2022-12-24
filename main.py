@@ -159,6 +159,11 @@ def hod(imya, protivnik):
             vistrel = [randint(1, 6), randint(1, 6)]
         else:
             vistrel = list(map(int, ((input(f'игрок {imya.name} введи координаты выстрела через пробел')).split())))
+            if vistrel[0] < 1 or vistrel[1] < 1 :
+                print('проверьте координаты выстрела')
+                if hod(imya, protivnik):
+                    return True
+                return False
         if protivnik.pool[vistrel[0]-1][vistrel[1]-1] == paluba:  #esli korabl, to proveryem na pobedu, esli ne pobeda to esche raz hodi
             protivnik.pool[vistrel[0]-1][vistrel[1]-1] = popal
             pechatpolya(igrok, ii)
